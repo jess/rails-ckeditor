@@ -1,7 +1,7 @@
 class Ckeditor::AttachmentsController < Ckeditor::BaseController
 
   def index
-    @attachments = Ckeditor.file_model.order("id DESC")
+    @attachments = Ckeditor.file_model.where(:assetable_id => current_user.id).order("id DESC")
     respond_with(@attachments)
   end
   

@@ -1,7 +1,7 @@
 class Ckeditor::PicturesController < Ckeditor::BaseController
 
   def index
-    @pictures = Ckeditor.image_model.order("id DESC")
+    @pictures = Ckeditor.image_model.where(:assetable_id => current_user.id).order("id DESC")
     respond_with(@pictures) 
   end
   
